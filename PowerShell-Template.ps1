@@ -1,6 +1,6 @@
 ### APPLICATION: PowerShell-Template
-### VERSION: 1.0.0
-### DATE: December 4, 2014
+### VERSION: 2.0.0
+#### DATE: June 11, 2015
 ### AUTHOR: Johan Cyprich
 ### AUTHOR URL: www.cyprich.com
 ### AUTHOR EMAIL: jcyprich@live.com
@@ -9,7 +9,7 @@
 ### The MIT License (MIT)
 ### http://opensource.org/licenses/MIT
 ###
-### Copyright (c) 2014 Johan Cyprich. All rights reserved.
+### Copyright (c) 2014-2015 Johan Cyprich. All rights reserved.
 ###
 ### Permission is hereby granted, free of charge, to any person obtaining a copy 
 ### of this software and associated documentation files (the "Software"), to deal
@@ -40,23 +40,22 @@ param
 
 #=[ SETTINGS ]======================================================================================
 
-
-# Settings file is located in the same folder as this script.
-#."$PSScriptRoot\Create-uStoreProxy.Settings.ps1"
+$xml = [xml](get-content $PSScriptRoot\Settings.xml)
 
 
 #=[ LIBRARIES ]=====================================================================================
 
 
-# Change this to your script libraries root folder.
-[string] $libraries = "D:\Projects\Libraries\MyLib\PowerShell"
+# Define libraries location if its not in the script directory.
+#[string] $libraries = "D:\Projects\Libraries\MyLib\PowerShell"
 
-#."$libraries\YourLibrary.ps1"
+#."$PSScriptRoot\YourLibrary.ps1"
 
 
 #=[ GLOBALS ]=======================================================================================
 
-[string] $global:st = "A string."
+
+#[string] $global:var = ""
 
 
 #=[ FUNCTIONS ]=====================================================================================
@@ -72,10 +71,10 @@ param
 
 function DisplayHelp
 {
-  if (($global:cmd -eq "?") -or ($global:cmd -eq "help"))
+  if (($cmd -eq "?") -or ($cmd -eq "help"))
   {
-    Write-Host " Usage: Create-uStoreProxy"
-    Write-Host " Example: .\Create-uStoreProxy.ps1"
+    Write-Host " Usage: PowerShell-Template"
+    Write-Host " Example: .\PowerShell-Template"
     Write-Host ""
   
     break  
@@ -137,14 +136,21 @@ function WriteProgramInfo
 #=[ MAIN ]==========================================================================================
 
 
-WriteProgramInfo "PowerShell-Template 1.0.0" "2014 Johan Cyprich"
+#$ErrorActionPreference = 'SilentlyContinue'
+
+WriteProgramInfo "PowerShell-Template 2.0.0" "2014-2015 Johan Cyprich"
 DisplayHelp
 
 #
 # Write code that does something.
 #
 
+Write-Host $xml.Settings.Application.Name
+Write-Host $xml.Settings.Application.Version
+Write-Host $xml.Settings.Application.Date
+
 # Close the program.
 
+Write-Host ""
 Write-Host " Done " -ForegroundColor White -BackgroundColor Red
 Write-Host ""
