@@ -1,36 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings>
-	<Application>
-		<Name>PowerShell-Template</Name>
-		<Version>4.1.0</Version>
-		<Date>September 1, 2017</Date>
-		<Author>Johan Cyprich</Author>
-		<AuthorContact>jcyprich@live.com</AuthorContact>
-		<Legal>
-			<Copyright>2014-2017 Johan Cyprich</Copyright>
-			<License>Licensed under The MIT License (MIT).</License>
-		</Legal>
-	</Application>
-
-	<DatabaseServer>
-		<Host></Host>
-		<User></User>
-		<Password></Password>
-	
-		<Database></Database>
-	</DatabaseServer>
-
-	<MailServer>
-		<SMTP></SMTP>
-		<User></User>
-		<Password></Password>
-		<Authenticate>True</Authenticate>
-	</MailServer>
-
 	<Emails>
 		<Email Name="Your Name">yourname@gmail.com</Email>
 	</Emails>
 
 	<Paths>
+		<Path></Path>
 	</Paths>
 </Settings>
